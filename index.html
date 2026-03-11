@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>משחקים ללימוד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="app">
+    <section id="section-home" class="section section--active">
+      <h1 class="home-title">בואי נשחק</h1>
+      <nav class="home-tiles">
+        <a href="#" class="tile tile--letters" data-section="aleph-bet" aria-label="אותיות">
+          <img src="img/icon-letters.png" alt="" class="tile-icon" width="128" height="128">
+        </a>
+        <a href="#" class="tile tile--colors" data-section="colors" aria-label="צבעים">
+          <img src="img/icon-colors.png" alt="" class="tile-icon" width="128" height="128">
+        </a>
+        <a href="#" class="tile tile--stories" data-section="stories" aria-label="סיפורים">
+          <img src="img/icon-stories.png" alt="" class="tile-icon" width="128" height="128">
+        </a>
+      </nav>
+    </section>
+
+    <section id="section-aleph-bet" class="section">
+      <header class="section-header">
+        <a href="#" class="back-btn" data-section="home" aria-label="חזרה"><img src="img/icon-back.png" alt="" class="back-btn-icon" width="48" height="48"></a>
+        <h2 class="section-title">אותיות</h2>
+      </header>
+      <div id="aleph-bet-grid" class="letter-grid"></div>
+    </section>
+
+    <section id="section-colors" class="section">
+      <header class="section-header">
+        <a href="#" class="back-btn" data-section="home" aria-label="חזרה"><img src="img/icon-back.png" alt="" class="back-btn-icon" width="48" height="48"></a>
+        <h2 class="section-title">צבעים</h2>
+      </header>
+      <div id="colors-grid" class="colors-grid"></div>
+    </section>
+
+    <section id="section-stories" class="section">
+      <header class="section-header">
+        <a href="#" class="back-btn" data-section="home" aria-label="חזרה"><img src="img/icon-back.png" alt="" class="back-btn-icon" width="48" height="48"></a>
+        <h2 class="section-title">סיפורים</h2>
+      </header>
+      <div id="stories-list" class="stories-list"></div>
+    </section>
+  </main>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

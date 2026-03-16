@@ -1,6 +1,8 @@
-# Theme (playful, kid-friendly)
+# Theme (High-Fidelity Claymorphism — kid-friendly)
 
 Target: 3-year-old, desktop browser with touch. Keep new screens consistent with these rules.
+
+> **Design system**: see [`skills/claymorphism/SKILL.md`](../skills/claymorphism/SKILL.md) for the full token reference, shadow stacks, and animation specs.
 
 ## Tap targets
 
@@ -11,31 +13,38 @@ Target: 3-year-old, desktop browser with touch. Keep new screens consistent with
 
 Use CSS custom properties so the palette is one place to edit.
 
-- **Primary (accent)**: bright but soft (e.g. `#6c5ce7` or similar).
-- **Background**: light, warm (e.g. `#fff5f0` or soft white).
-- **Surfaces**: cards/tiles with soft shadow and rounded corners.
-- **Text**: high contrast on background (dark gray or black on light).
-- **Colors section**: use the hex values from content-schema for swatches; ensure border or shadow so white/light swatches are visible.
+- **Primary (accent)**: `#7C3AED` (vivid violet).
+- **Accent soft**: `#A78BFA` (lighter violet — used in gradients).
+- **Accent alt**: `#DB2777` (hot pink — for tiles / secondary emphasis).
+- **Background canvas**: `#F4F1FA` (very pale cool lavender-white — never pure white).
+- **Surfaces**: glass-clay cards `rgba(255,255,255,0.7)` with `backdrop-filter: blur(12px)` and 4-layer clay shadow.
+- **Text**: `#332F3A` (soft charcoal — never pure black).
+- **Muted text**: `#635F69` (minimum value — never lighter for accessibility).
+- **Colors section**: use the hex values from content-schema for swatches; clay button shadow gives depth to all colors including white.
 
-Avoid harsh contrast or flashing; keep it friendly and calm.
+## Animated background blobs
+
+Three `position:fixed` circles with accent colors at 10% opacity and `filter: blur(80px)` drift slowly via `clay-float` keyframes. This ambient lighting shows through glass-clay surfaces. Always include them — never use a flat background.
 
 ## RTL and Hebrew
 
 - Root: `dir="rtl"` and `lang="he"` on `<html>`.
 - Layout: flex/grid with logical RTL flow (margins, padding, alignment work correctly in RTL).
-- Font: clear Hebrew font, e.g. Heebo, Frank Ruhl Libre, or system Hebrew. Load via link or @import; set in `body` or `:root`.
+- Font: clear Hebrew font — **Heebo** — as the last fallback for RTL text. Headings use **Nunito** (rounded weight, clay-friendly), body text uses **DM Sans**.
 
 ## Typography
 
-- **Headings**: large, rounded or friendly weight (e.g. 1.5rem–2rem).
-- **Body/labels**: readable size (e.g. 1rem minimum); avoid tiny text.
+- **Headings / section titles**: Nunito 800–900 weight (`var(--font-heading)`), large size, tight letter spacing.
+- **Hebrew letters / story titles**: Heebo (`var(--font-hebrew)`), 600–700 weight.
+- **Body**: DM Sans (`var(--font-body)`), 400–500 weight.
 
 ## Shapes and motion
 
-- **Rounded corners**: e.g. `border-radius: 1rem` (or similar) on cards and buttons.
-- **Shadows**: soft box-shadow for depth, not harsh.
-- **Motion**: optional short feedback on tap (e.g. scale or glow); no long or distracting animations.
+- **Rounded corners**: super-rounded everywhere — minimum `1.25rem` (20px). Standard cards `2rem` (32px). Large containers / home tiles `3rem` (48px). Never use `border-radius` below 1.25rem.
+- **Shadows**: 4-layer clay shadow stacks — `--shadow-clay-card`, `--shadow-clay-button`, `--shadow-clay-pressed`. See `skills/claymorphism/SKILL.md` for values.
+- **Motion**: hover lifts element upward (`translateY(-6px)` to `-8px`) and enhances shadow. Active/pressed compresses (`scale(0.92)`) with inset shadow. All animations respect `prefers-reduced-motion`.
 
 ## Section home tiles
 
-The three home tiles (אותיות, צבעים, סיפורים) should be large, visually distinct (icon or color), and clearly tappable. Same tap-target and rounded/shadow rules as above.
+The three home tiles (אותיות, צבעים, סיפורים) use bold gradient backgrounds (violet, hot-pink, sky-blue), `border-radius: var(--radius-xl)` (3rem), `shadow-clay-button`, and hover-lift + active-squish interactions. No text labels — icon only.
+

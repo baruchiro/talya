@@ -38,7 +38,7 @@ Follow this flow for every feature or content change:
 
 5. **Take screenshots of any UI changes** using Playwright (the tests already capture them to `test-results/screenshots/`). Attach relevant screenshots to your PR so reviewers can see the visual impact.
 
-6. **Commit and push** to `main` to deploy automatically.
+6. **Use `report_progress`** to commit and push your changes to the PR branch. Deployment to GitHub Pages happens automatically once the PR is merged to `main` — the agent does not push directly to `main`.
 
 ## File map
 

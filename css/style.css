@@ -66,11 +66,15 @@ body {
   gap: 1.5rem;
   justify-content: center;
   align-items: flex-start;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .tile {
   flex: 1 1 200px;
   min-width: 180px;
+  max-width: 300px;
   aspect-ratio: 1 / 1;
   padding: 1.5rem 2rem;
   border: none;
@@ -114,11 +118,14 @@ body {
 }
 
 .tile-icon {
-  width: clamp(4rem, 10vw, 10rem);
-  height: auto;
+  width: 55%;
+  aspect-ratio: 1;
   display: block;
   pointer-events: none;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .back-btn-icon {
@@ -243,6 +250,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .story-btn {

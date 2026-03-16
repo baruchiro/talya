@@ -1,5 +1,6 @@
 (function () {
   var LETTERS = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'];
+  var LETTER_NAMES = ['אלף', 'בית', 'גימל', 'דלת', 'הא', 'וו', 'זיין', 'חית', 'טית', 'יוד', 'כף', 'למד', 'מם', 'נון', 'סמך', 'עין', 'פא', 'צדי', 'קוף', 'ריש', 'שין', 'תו'];
 
   var COLORS = [
     { id: 'red', hebrew: 'אדום', hex: '#e74c3c' },
@@ -38,15 +39,16 @@
     if (!grid) return;
     grid.innerHTML = '';
     LETTERS.forEach(function (letter, i) {
+      var name = LETTER_NAMES[i];
       var btn = document.createElement('button');
       btn.type = 'button';
       btn.className = 'letter-btn';
-      btn.setAttribute('aria-label', letter);
+      btn.setAttribute('aria-label', name);
       btn.textContent = letter;
       btn.addEventListener('click', function () {
         window.playAudio({
           url: 'audio/letters/' + pad(i) + '.mp3',
-          text: letter
+          text: name
         });
       });
       grid.appendChild(btn);

@@ -6,34 +6,34 @@ Canonical list of letters, colors, and stories. Add new items here; app code mir
 
 22 base letters. Optional final forms (ך, ם, ן, ף, ץ) can be added later as separate buttons.
 
-| Letter | Audio filename (optional) |
-|--------|---------------------------|
-| א | aleph.mp3 or 01.mp3 |
-| ב | bet.mp3 or 02.mp3 |
-| ג | gimel.mp3 or 03.mp3 |
-| ד | dalet.mp3 or 04.mp3 |
-| ה | he.mp3 or 05.mp3 |
-| ו | vav.mp3 or 06.mp3 |
-| ז | zayin.mp3 or 07.mp3 |
-| ח | het.mp3 or 08.mp3 |
-| ט | tet.mp3 or 09.mp3 |
-| י | yod.mp3 or 10.mp3 |
-| כ | kaf.mp3 or 11.mp3 |
-| ל | lamed.mp3 or 12.mp3 |
-| מ | mem.mp3 or 13.mp3 |
-| נ | nun.mp3 or 14.mp3 |
-| ס | samekh.mp3 or 15.mp3 |
-| ע | ayin.mp3 or 16.mp3 |
-| פ | pe.mp3 or 17.mp3 |
-| צ | tsadi.mp3 or 18.mp3 |
-| ק | qof.mp3 or 19.mp3 |
-| ר | resh.mp3 or 20.mp3 |
-| ש | shin.mp3 or 21.mp3 |
-| ת | tav.mp3 or 22.mp3 |
+| Letter | Name (Hebrew) | Audio filename (optional) |
+|--------|---------------|---------------------------|
+| א | אלף | aleph.mp3 or 01.mp3 |
+| ב | בית | bet.mp3 or 02.mp3 |
+| ג | גימל | gimel.mp3 or 03.mp3 |
+| ד | דלת | dalet.mp3 or 04.mp3 |
+| ה | הא | he.mp3 or 05.mp3 |
+| ו | וו | vav.mp3 or 06.mp3 |
+| ז | זיין | zayin.mp3 or 07.mp3 |
+| ח | חית | het.mp3 or 08.mp3 |
+| ט | טית | tet.mp3 or 09.mp3 |
+| י | יוד | yod.mp3 or 10.mp3 |
+| כ | כף | kaf.mp3 or 11.mp3 |
+| ל | למד | lamed.mp3 or 12.mp3 |
+| מ | מם | mem.mp3 or 13.mp3 |
+| נ | נון | nun.mp3 or 14.mp3 |
+| ס | סמך | samekh.mp3 or 15.mp3 |
+| ע | עין | ayin.mp3 or 16.mp3 |
+| פ | פא | pe.mp3 or 17.mp3 |
+| צ | צדי | tsadi.mp3 or 18.mp3 |
+| ק | קוף | qof.mp3 or 19.mp3 |
+| ר | ריש | resh.mp3 or 20.mp3 |
+| ש | שין | shin.mp3 or 21.mp3 |
+| ת | תו | tav.mp3 or 22.mp3 |
 
 Letter order for grid: א, ב, ג, ד, ה, ו, ז, ח, ט, י, כ, ל, מ, נ, ס, ע, פ, צ, ק, ר, ש, ת.
 
-TTS fallback uses the letter itself (e.g. "א") or a name map (e.g. "א" → "אלף") if implemented.
+TTS fallback speaks the letter name (e.g. "אלף" for א, "גימל" for ג). The `LETTER_NAMES` array in `js/main.js` must stay in sync with this table.
 
 ## Colors
 

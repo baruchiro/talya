@@ -46,6 +46,6 @@ Each tile uses `aspect-ratio: 1 / 1` (square), `flex: 1 1 200px`, and `max-width
 
 The app fills the full viewport width at any size — no `max-width` cap on `.app` itself. Sections follow these rules by category:
 
-- **Grids with many items** (letters, colors): use `flex: 1` + `grid-auto-rows: 1fr` + `align-content: stretch` so cells grow to fill the viewport — with 22+ items this looks intentional and gives big tap targets.
+- **Grids with many items** (letters, colors): use `auto-fill` columns + `aspect-ratio: 1` on each cell so items are always square and fill the width. Do **not** use `flex: 1` / `grid-auto-rows: 1fr` on these grids — with only 2 rows of cells that would stretch them to ~50% viewport height each, which looks bad.
 - **Lists/tiles with few items** (home tiles, stories): do **not** stretch to fill height; let content size itself naturally. Use `max-width` + `margin: 0 auto` on the container (home: 960px, stories: 760px) so they stay centered and readable rather than spanning the full wide screen.
 - **Never** add `flex: 1` to a container that has only a handful of children (< ~10), as it creates oversized, empty-looking elements.

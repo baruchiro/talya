@@ -9,7 +9,7 @@ description: Apply the High-Fidelity Claymorphism design system to the app. Use 
 
 - Restyling existing components to match the clay aesthetic
 - Adding new interactive elements (buttons, cards, tiles)
-- Updating the colour palette, shadows, or border radii
+- Updating the color palette, shadows, or border radii
 - Adding or modifying animations and hover effects
 
 ## Design philosophy — Digital Clay
@@ -90,7 +90,7 @@ Add inside `<body>` **before** `<main>`:
 </div>
 ```
 
-CSS blobs are `position:fixed`, `border-radius:50%`, `blur(80px)`, accent colour at 10% opacity, animated with `clay-float` keyframes (8–12 s).
+CSS blobs are `position:fixed`, `border-radius:50%`, `blur(80px)`, accent color at 10% opacity, animated with `clay-float` keyframes (8–12 s).
 
 ## Interactive state rules
 

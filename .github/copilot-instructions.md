@@ -2,16 +2,43 @@
 
 ## Project overview
 
-Static Hebrew kids learning app for a 3-year-old named Talya. Three activities: Aleph-Bet (Hebrew letters), Colors, and Stories. Tap any item to hear its name (or story title) spoken in Hebrew. No backend, no build step, no package manager — pure HTML, CSS, and vanilla JS served as static files.
+Static Hebrew kids learning app for a 3-year-old named Talya. Three activities: Aleph-Bet (Hebrew letters), Colors, and Stories. Tap any item to hear its name (or story title) spoken in Hebrew. No backend, no build step — pure HTML, CSS, and vanilla JS served as static files. A `package.json` exists only for Playwright dev tooling.
 
 **Navigation is symbol-only** (icon images, no text labels) because the target user cannot read yet.
 
 ## Tech stack and tooling
 
-- **No build system**: No npm, webpack, Babel, or test runner. Edit files directly.
-- **Local dev**: Serve with `npx live-server --port=8765` (auto-reload) or `python3 -m http.server 8000`. Open `http://127.0.0.1:8765` or the URL shown.
-- **No automated tests**: There is no test suite. Validate changes manually in a browser.
+- **No build system**: No webpack or Babel. Edit HTML/CSS/JS files directly.
+- **Dev dependencies**: `@playwright/test` (browser testing). Install with `npm install` and set up browsers once with `npx playwright install chromium`.
+- **Local dev server**: `npx live-server --port=8765` (auto-reload on file change). Open `http://127.0.0.1:8765`.
+- **Automated tests**: Playwright (`npm test`). Tests live in `tests/app.spec.js` and cover all four sections plus navigation.
 - **Deployment**: GitHub Actions on push to `main` → GitHub Pages. Workflow: `.github/workflows/deploy.yml`. See `docs/deployment.md` for one-time setup.
+
+## Feature development workflow
+
+Follow this flow for every feature or content change:
+
+1. **Install dependencies** (first time or after pulling):
+   ```bash
+   npm install
+   npx playwright install chromium
+   ```
+
+2. **Start the local dev server**:
+   ```bash
+   npx live-server --port=8765
+   ```
+
+3. **Make your changes** to `index.html`, `css/style.css`, `js/main.js`, etc.
+
+4. **Run the Playwright tests** to verify nothing is broken:
+   ```bash
+   npm test
+   ```
+
+5. **Take screenshots of any UI changes** using Playwright (the tests already capture them to `test-results/screenshots/`). Attach relevant screenshots to your PR so reviewers can see the visual impact.
+
+6. **Commit and push** to `main` to deploy automatically.
 
 ## File map
 
@@ -25,6 +52,9 @@ audio/colors/       Optional MP3 files per color id (red.mp3, blue.mp3, …)
 audio/stories/      Optional MP3 files per story (story-1.mp3, …)
 img/                Navigation icons (PNG): icon-letters.png, icon-colors.png,
                     icon-stories.png, icon-back.png
+tests/app.spec.js   Playwright tests; cover all sections and navigation
+playwright.config.js  Playwright config; starts live-server automatically
+package.json        Dev dependency: @playwright/test only (no build tooling)
 docs/content-schema.md  Canonical list of letters, colors, and stories (source of truth)
 docs/audio.md       Audio folder layout, naming conventions, TTS fallback details
 docs/theme.md       Palette (CSS vars), tap targets (min 72 px), RTL/Hebrew rules
@@ -104,9 +134,10 @@ Push to `main` triggers automatic deploy to GitHub Pages via `.github/workflows/
 
 ## Common mistakes to avoid
 
-- **Do not add a build step or package.json** unless explicitly asked — the app is intentionally zero-dependency.
+- **Do not add a build system** (webpack, Babel, etc.) — the app is intentionally zero-build; `package.json` is only for Playwright dev tooling.
 - **Do not add text labels** to navigation tiles or back buttons — the user cannot read.
 - **Keep `dir="rtl"` and `lang="he"` on `<html>`** — required for correct RTL layout and Hebrew TTS.
 - **Mirror content changes in both `docs/content-schema.md` and `js/main.js`** — they must stay in sync.
 - **Always use `playAudio({ url, text })`** for audio — never call the Web Speech API directly from `main.js`.
 - **Tap targets must be at least 72 px** — use `--tap-min` custom property.
+- **Always include screenshots of UI changes in the PR** — take them from `test-results/screenshots/` after running `npm test`.

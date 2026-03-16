@@ -39,3 +39,12 @@ Avoid harsh contrast or flashing; keep it friendly and calm.
 ## Section home tiles
 
 The three home tiles (אותיות, צבעים, סיפורים) should be large, visually distinct (icon or color), and clearly tappable. Same tap-target and rounded/shadow rules as above.
+
+Each tile uses `aspect-ratio: 1 / 1` (square) and `flex: 1 1 200px` so they fill the full width and stay proportional at any screen size. The icon scales with the tile via `clamp(4rem, 10vw, 10rem)`.
+
+## Full-screen layout rules
+
+The app fills the full viewport width at any size — no `max-width` cap on the container or on grids/lists. Height stretching follows this rule:
+
+- **Stretch to fill height** only for screens with many items (e.g. letters grid, colors grid). Use `flex: 1` + `grid-auto-rows: 1fr` + `align-content: stretch`.
+- **Do not stretch height** for screens with few items (home tiles, stories list). Let content determine its natural height to avoid oversized, empty-looking elements.
